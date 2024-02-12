@@ -44,7 +44,7 @@ PENDIENTE:
 
 -Configurar las imagene con lazy load.
 
--Crear y gstionar el botón de sincronización.
+-Crear y gestionar el botón de sincronización.
 
 -Control de errores para los formularios.
 
