@@ -66,6 +66,6 @@ a:
 y recibiría por params su valor desde el front (suponiendo que usasemos la misma paginación que la api).
 
 
-
 2º
+
 Segmentaria el array original en partes manejables, después iteraría las partes aplicando un filter sobre vote_average > 6, que se irían acoplando en un array final.
