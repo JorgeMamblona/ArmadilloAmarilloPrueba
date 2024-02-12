@@ -7,7 +7,7 @@ const SignupPage = () => {
             <Container className='signup-page'>
                 <Row >
                     <Col md={{ offset: 3, span: 6 }}>
-                        <h1>Sign Up</h1>
+                        <h1>Crear usuario</h1>
                         <SignupForm />
                     </Col>
                 </Row>

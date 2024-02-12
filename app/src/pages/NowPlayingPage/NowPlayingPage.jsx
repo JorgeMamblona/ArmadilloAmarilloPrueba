@@ -1,21 +1,41 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-import { Container } from "react-bootstrap"
+import { Container, Row } from "react-bootstrap"
+
+import moviesService from "../../services/movies.services"
+import FilmCard from '../../components/FilmCard/FilmCard'
 
 
 const NowPlayingPage = () => {
 
     const [nowPlaying, setNowPlaying] = useState()
 
-    return (
+    const loadNowPlaying = () => {
+        moviesService
+            .getNowPlaying()
+            .then(({ data }) => setNowPlaying(data))
+            .catch(err => console.log(err))
+    }
+    useEffect(() => {
+        loadNowPlaying()
+    }, [])
 
-        <Container>
-            <ul>
-                {
-                    !nowPlaying ? <h1>loading</h1> : nowPlaying.map(elm => <FilmCard key={elm._id} {...elm} />)
-                }
-            </ul>
-        </Container>
+    return (
+        <>
+            {
+                !nowPlaying ?
+                    <h1>Loading...</h1>
+                    :
+                    <Container>
+                        <h1 style={{ textAlign: 'center', borderBottom: '2px solid midnightblue', padding: '5px' }}>En Cartelera</h1>
+                        <Row>
+                            {
+                                nowPlaying.results.map(elm => <FilmCard key={elm.id} {...elm} />)
+                            }
+                        </Row>
+                    </Container >
+            }
+        </>
     )
 }
 

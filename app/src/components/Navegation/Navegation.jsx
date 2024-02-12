@@ -1,25 +1,42 @@
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
+import { useContext } from 'react'
+
+import { AuthContext } from '../../contexts/auth.context'
+
 
 import { Container, Nav, Navbar } from 'react-bootstrap'
 
-const NavegationHor = () => {
+const Navegation = () => {
+
+    const { loggedUser, logout } = useContext(AuthContext)
+
+    const doLogout = () => {
+        logout()
+        Navigate("/log-in")
+    }
 
     return (
-        <>
-            <Navbar className='custom-nav-hor  ' data-bs-theme="dark">
-                <Container>
-                    <div className='d-flex'>
-                        <Nav className="me-auto">
-                            <Link to={'/log-in'} >Login</Link>
-                            <Link to={'/sign-up'} >Sign up</Link>
-                            <Link to={'/nowPlaying'} >Now Playing</Link>
-                            <Link to={'/Popular'} >Popular</Link>
-                        </Nav>
-                    </div>
-                </Container>
-            </Navbar>
-        </>
+
+        <Navbar style={{ backgroundColor: 'midnightblue', marginBottom: '15px' }} >
+            <Container>
+                <Navbar.Brand style={{ color: 'NavajoWhite' }}>Armadillo Cines</Navbar.Brand>
+                <Nav className="me-auto">
+                    {
+                        loggedUser ?
+                            <Link style={{ color: 'white', margin: '10px', textDecoration: 'none' }} onClick={doLogout} >Log out</Link>
+                            :
+                            <>
+                                <Link style={{ color: 'white', margin: '10px', textDecoration: 'none' }} to={'/log-in'} >Log in</Link>
+                                <Link style={{ color: 'white', margin: '10px', textDecoration: 'none' }} to={'/sign-up'} >Registro</Link>
+                            </>
+                    }
+                    <Link style={{ color: 'white', margin: '10px', textDecoration: 'none' }} to={'/nowPlaying'} >Now Playing</Link>
+                    <Link style={{ color: 'white', margin: '10px', textDecoration: 'none' }} to={'/Popular'} >Populares</Link>
+                </Nav>
+            </Container>
+        </Navbar >
+
     )
 }
 
-export default NavegationHor
+export default Navegation

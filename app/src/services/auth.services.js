@@ -3,7 +3,7 @@ class AuthService {
 
     constructor() {
         this.api = axios.create({
-            baseURL: `http://localhost:5005/`
+            baseURL: `http://localhost:5005/api/auth`
         })
 
         this.api.interceptors.request.use((config) => {
@@ -20,15 +20,15 @@ class AuthService {
     }
 
     signup(userData) {
-        return this.api.post('/auth/signup', userData)
+        return this.api.post('/signup', userData)
     }
 
     login(userData) {
-        return this.api.post('/auth/login', userData)
+        return this.api.post('/login', userData)
     }
 
     verify(authToken) {
-        return this.api.get('/auth/verify', {
+        return this.api.get('/verify', {
             headers: { Authorization: `Bearer ${authToken}` }
         })
     }

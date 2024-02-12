@@ -15,7 +15,7 @@ const AuthContextWrapper = props => {
         token && authService
             .verify(token)
             .then(({ data }) => {
-                setLoggedUser(data.loggedUser)
+                setLoggedUser(data)
                 setIsLoading(false)
             })
             .catch(err => {

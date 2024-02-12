@@ -3,9 +3,9 @@ import LoginPage from '../pages/LoginPage/LoginPage'
 import HomePage from '../pages/HomePage/HomePage'
 import NowPlayingPage from '../pages/NowPlayingPage/NowPlayingPage'
 import PopularPage from '../pages/PopularPage/PopularPage'
+import DetailsPage from '../pages/DetailsPage/DetailsPage'
 
 import PrivateRoute from './PrivateRoute'
-
 import { Routes, Route } from 'react-router-dom'
 
 const AppRoutes = () => {
@@ -16,10 +16,11 @@ const AppRoutes = () => {
             <Route path='/' element={<HomePage />} />
             <Route path='/sign-up' element={<SignupPage />} />
             <Route path='/log-in' element={<LoginPage />} />
-            {/* <Route element={<PrivateRoute />}> */}
-            <Route path='/nowPlaying' element={<NowPlayingPage />} />
-            <Route path='/popular' element={<PopularPage />} />
-            {/*  </Route>*/}
+            <Route element={<PrivateRoute />}>
+                <Route path='/nowPlaying' element={<NowPlayingPage />} />
+                <Route path='/popular' element={<PopularPage />} />
+                <Route path='/details/:id' element={<DetailsPage />} />
+            </Route>
 
             <Route path='*' element={<h1>404</h1>} />
         </Routes>

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"
 import { Form, Button } from "react-bootstrap"
 import authService from "../../services/auth.services"
 import { AuthContext } from "../../contexts/auth.context"
-import FormError from "../FormError/FormError"
 
 const SignupForm = () => {
 
@@ -34,9 +33,9 @@ const SignupForm = () => {
             .then(({ data }) => {
                 localStorage.setItem('authToken', data.authToken)
                 authenticateUser()
-                navigate('/')
+                navigate('/popular')
             })
-            .catch(err => setErrors(err.response.data.errorMessages))
+            .catch(err => console.log(err))
     }
 
     return (
@@ -55,7 +54,6 @@ const SignupForm = () => {
                 Submit
             </Button>
 
-            {errors.length > 0 && <FormError>{errors.map(elm => <p>{elm}</p>)}</FormError>}
         </Form>
 
     )
