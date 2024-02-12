@@ -52,7 +52,9 @@ PENDIENTE:
 
 
 RESPUESTAS TEÓRICAS
+
 1º
+
 En el front craría un dos botones para pasar de página y su valor sería mandado al back.
 En el back establecería una variable page y la implementearía dentro del url de la petición
 
@@ -62,6 +64,7 @@ a:
     const url = `${baseUrl}/popular?language=en-US&${page}`
 
 y recibiría por params su valor desde el front (suponiendo que usasemos la misma paginación que la api).
+
 
 
 2º
